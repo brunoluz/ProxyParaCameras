@@ -1,0 +1,15 @@
+# Compiled source #
+###################
+*.dll
+*.exe
+
+# Folders #
+###################
+bin
+obj
+packages
+.vs
+
+# VS Itens #
+*.suo
+*.user
