@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Microsoft.Extensions.DependencyInjection;
+
+using ProxyParaCameras.Models.Settings;
+
 
 namespace ProxyParaCameras2
 {
@@ -13,6 +17,8 @@ namespace ProxyParaCameras2
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+
         }
     }
 }

@@ -1,0 +1,13 @@
+﻿<html>
+<head>
+    <title>cameras</title>
+</head>
+
+<body>
+    @foreach (var camera in ViewBag.Cameras)
+    {
+        string url = "/image/" + @camera.Name + ".jpg";
+        <img src="@url"><br />
+    }
+</body>
+</html>

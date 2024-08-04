@@ -34,35 +34,5 @@ namespace ProxyParaCameras2.Models
                 }
             }
         }
-
-        internal string GetString(string url)
-        {
-            string retorno;
-
-            var cookieContainer = new CookieContainer();
-            cookieContainer.Add(new Uri(url), new Cookie("bRememberMe", "1"));
-            cookieContainer.Add(new Uri(url), new Cookie("userLastLogin", user));
-            cookieContainer.Add(new Uri(url), new Cookie("passwordLastLogin", user));
-            cookieContainer.Add(new Uri(url), new Cookie("user", user));
-            cookieContainer.Add(new Uri(url), new Cookie("password", pass));
-            cookieContainer.Add(new Uri(url), new Cookie("pwd", pass));
-            cookieContainer.Add(new Uri(url), new Cookie("usrLevel", "0"));
-            cookieContainer.Add(new Uri(url), new Cookie("bShowMenu", "1"));
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.CookieContainer = cookieContainer;
-            request.AllowWriteStreamBuffering = true;
-            request.Credentials = new NetworkCredential(this.user, this.pass);
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            {
-                using (Stream stream = response.GetResponseStream())
-                {
-                    StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
-                    retorno = sr.ReadToEnd();
-                }
-            }
-
-            return retorno;
-        }
     }
 }

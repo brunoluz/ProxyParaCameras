@@ -1,4 +1,5 @@
-﻿using ProxyParaCameras2.Models;
+﻿using ProxyParaCameras.Models.Settings;
+using ProxyParaCameras2.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,11 +12,11 @@ namespace ProxyParaCameras2.Controllers
 {
     public class ImageController : Controller
     {
-        UrlCameraHelper urlCameraHelper;
+        ProxySettings settings;
 
         public ImageController()
         {
-            this.urlCameraHelper = new UrlCameraHelper();
+            this.settings = new ProxySettings();
         }
 
         // GET: Image
@@ -27,19 +28,14 @@ namespace ProxyParaCameras2.Controllers
             base.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             base.Response.Cache.SetNoStore();
 
-            string url = urlCameraHelper.ObterUrlDeCamera(camera);
+            //string url = urlCameraHelper.ObterUrlDeCamera(camera);
 
-            AuthenticatedRequest request = new AuthenticatedRequest("casa", "familiaLuz");
+            AuthenticatedRequest request = new AuthenticatedRequest(settings.User, settings.Password);
+            Camera camerasetting = settings.cameras.Where(x => string.Equals(x.Name, camera, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 
-            // bool precisaDeParametroParaVerImagem = urlCameraHelper.CarregarParametroParaVerImagem();
-
-
-            using (Image image = request.GetImage(url))
+            using (Image image = request.GetImage(camerasetting.Url))
             {
-                bool escreverData;
-                WriteImageOptions options = (bool.TryParse(Request.QueryString["data"], out escreverData) && escreverData) ? WriteImageOptions.Yes : WriteImageOptions.No;
-
-                using (MemoryStream imageStream = image.WriteDateTimeAndConvertToMemoryStream(options))
+                using (MemoryStream imageStream = image.WriteImageToMemoryStream())
                 {
                     return base.File(imageStream.ToArray(), "image/jpeg");
                 }
