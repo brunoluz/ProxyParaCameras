@@ -16,4 +16,4 @@ packages
 ProxyParaCameras/Properties/PublishProfiles/
 
 # Config files
-# ProxyParaCameras/camerasconfiguration.json
+ProxyParaCameras/camerasconfiguration.json
