@@ -20,7 +20,7 @@ namespace ProxyParaCameras.Models.Settings
 
     internal class ProxySettings
     {
-        readonly string fileName = "camerasconfiguration.json";
+        readonly string fileName = "c:\\camerasconfiguration.json";
 
         static bool firstExecution = true;
         static string globalUser;

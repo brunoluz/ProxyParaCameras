@@ -148,7 +148,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Global.asax" />
-    <None Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -164,13 +164,11 @@
     <Compile Include="Models\AuthenticatedRequest.cs" />
     <Compile Include="Models\ImageExtensions.cs" />
     <Compile Include="Models\Settings\ProxySettings.cs" />
-    <Compile Include="Models\UrlCameraHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="camerasconfiguration.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
