@@ -14,3 +14,6 @@ packages
 *.suo
 *.user
 ProxyParaCameras/Properties/PublishProfiles/
+
+# Config files
+ProxyParaCameras/camerasconfiguration.json
